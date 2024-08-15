@@ -9,6 +9,11 @@ import { SafeArea } from "../../../components/utility/safe-area.component";
 
 const SearchContainer = styled.View`
   padding: ${(props) => props.theme.space.md};
+  background-color: ${(props) => props.theme.colors.bg.secondary};
+`;
+
+const StyledSearchbar = styled(Searchbar)`
+  border-radius: 5px; 
   background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
@@ -22,7 +27,7 @@ export const RestaurantsScreen = () => {
   return (
     <SafeArea>
       <SearchContainer>
-        <Searchbar />
+        <StyledSearchbar />
       </SearchContainer>
       <RestaurantList
         data={[
@@ -42,7 +47,7 @@ export const RestaurantsScreen = () => {
             <RestaurantInfoCard />
           </Spacer>
         )}
-        keyExtractor={(item) => item.name}
+        keyExtractor={(item) => item.name.toString()}
       />
     </SafeArea>
   );
