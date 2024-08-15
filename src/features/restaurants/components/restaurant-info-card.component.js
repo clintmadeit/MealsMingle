@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, Image } from "react-native";
 import React from "react";
 import { Card } from "react-native-paper";
 import restImage from "../../../../assets/images/rest_01.jpg";
@@ -58,11 +58,6 @@ const Closed = styled.Text`
   color: ${(props) => props.theme.colors.ui.error};
 `;
 
-const Image = styled.Image`
-  width: 15px;
-  height: 15px;
-`;
-
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
@@ -103,7 +98,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>
             <Spacer position="left" size="large">
-              <Image source={{ uri: icon }} />
+              <Image source={{ uri: icon }} style={{ width: 15, height: 15 }} />
             </Spacer>
 >>>>>>> 2617a27 (complete restaurant card details, spacer implementation nad further styling)
           </SectionEnd>

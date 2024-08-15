@@ -21,6 +21,10 @@ const getVariant = (position, size) => {
   return `${property}: ${value}`;
 };
 
+const SpacerView = styled.View`
+  ${({ position, size }) => getVariant(position, size)}
+`;
+
 export const Spacer = styled.View`
   ${({ position, size }) => getVariant(position, size)}
 `;
