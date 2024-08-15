@@ -88,19 +88,12 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
                 <Text variant="label">CLOSED TEMPORARILY</Text>
               </Closed>
             )}
-<<<<<<< HEAD
-            <Spacer variant="left.large" />
-            {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-            <Spacer variant="left.large" />
-            <Image source={{ uri: icon }} />
-=======
             <Spacer position="left" size="large">
               {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>
             <Spacer position="left" size="large">
               <Image source={{ uri: icon }} style={{ width: 15, height: 15 }} />
             </Spacer>
->>>>>>> 2617a27 (complete restaurant card details, spacer implementation nad further styling)
           </SectionEnd>
         </Section>
         <Address>{address}</Address>
