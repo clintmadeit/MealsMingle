@@ -24,6 +24,11 @@ const caption = (theme) => `
   font-weight: ${theme.fontWeights.bold};
 `;
 
+const address = (theme) => `
+  font-family: ${theme.fonts.body};
+  font-size: ${theme.fontSizes.caption};
+`;
+
 const error = (theme) => `
   color: ${theme.colors.text.error};
 `;
@@ -36,6 +41,7 @@ const variants = {
   body,
   label,
   caption,
+  address,
   error,
   hint,
 };
