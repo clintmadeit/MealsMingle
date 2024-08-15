@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { space } from "../../../../infrastructure/theme/spacing";
+import { space } from "../../infrastructure/theme/spacing";
 
 const sizeVariant = {
   small: space.vsm,
