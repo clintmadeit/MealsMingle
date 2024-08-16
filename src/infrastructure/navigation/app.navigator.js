@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { SettingsScreen } from "../../features/restaurants/screens/settings.screen";
-import { MapsScreen } from "../../features/restaurants/screens/maps.screen";
+import { MapsScreen } from "../../features/maps/screens/maps.screen";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 
 const Tab = createBottomTabNavigator();

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Card } from "react-native-paper";
+import { Image } from "react-native";
 
 export const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -31,7 +32,7 @@ export const SectionEnd = styled.View`
   justify-content: flex-end;
 `;
 
-export const Icon = styled.Image`
+export const Icon = styled(Image)`
   width: 20px;
   height: 20px;
 `;
