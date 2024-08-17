@@ -2,15 +2,15 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import { SettingsScreen } from "../../features/restaurants/screens/settings.screen";
-import { MapsScreen } from "../../features/maps/screens/maps.screen";
 import { RestaurantsNavigator } from "./restaurants.navigator";
+import { MapScreen } from "../../features/maps/screens/map.screen";
+import { SettingsScreen } from "../../features/restaurants/screens/settings.screen";
 
 const Tab = createBottomTabNavigator();
 
 const TabIcons = {
   Restaurants: "restaurant",
-  Maps: "map",
+  Map: "map",
   Settings: "settings",
 };
 
@@ -32,7 +32,7 @@ export const AppNavigator = () => (
   <NavigationContainer>
     <Tab.Navigator screenOptions={createScreenOptions}>
       <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-      <Tab.Screen name="Maps" component={MapsScreen} />
+      <Tab.Screen name="Map" component={MapScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
   </NavigationContainer>
