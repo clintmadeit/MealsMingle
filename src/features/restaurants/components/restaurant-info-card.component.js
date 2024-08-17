@@ -14,7 +14,7 @@ import {
   SectionEnd,
   Icon,
 } from "./restaurant-info-card.styles";
-import { Favourite } from "./favourites/favourite.component";
+import { Favourite } from "../../../components/favourites/favourite.component";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {

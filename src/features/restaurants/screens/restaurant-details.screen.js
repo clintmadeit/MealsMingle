@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { List, useTheme } from "react-native-paper";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView } from "react-native";
 import { LayoutAnimation, Platform, UIManager } from "react-native";
 
 if (
