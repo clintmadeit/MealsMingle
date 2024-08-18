@@ -5,34 +5,41 @@ import { loginRequest } from "./auth.service";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
 
   const onLogin = (email, password) => {
+    if (!email || !password) {
+      setError("Email and password cannot be empty");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Invalid email format");
+      return;
+    }
+
     setIsLoading(true);
     loginRequest(email, password)
       .then((u) => {
-        setIsAuthenticated(true);
         setUser(u);
         setIsLoading(false);
       })
-      .catch((err) => {
+      .catch((e) => {
         setIsLoading(false);
-        setError(err);
+        setError(e.toString());
       });
   };
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated: false,
-        isLoading: false,
-        error: null,
-        user: null,
-        onLogin: () => {},
-        onRegister: () => {},
-        onLogout: () => {},
+        isAuthenticated: !!user,
+        user,
+        isLoading,
+        error,
+        onLogin,
       }}
     >
       {children}
