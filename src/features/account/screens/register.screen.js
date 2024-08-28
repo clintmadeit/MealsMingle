@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useContext, useState } from "react";
 import {
   AccountBackground,
@@ -84,11 +83,4 @@ export const RegisterScreen = ({ navigation }) => {
       </Spacer>
     </AccountBackground>
   );
-=======
-import React from "react";
-import { AccountBackground } from "../components/account-background.style";
-
-export const RegisterScreen = () => {
-  return <AccountBackground />;
->>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
 };
