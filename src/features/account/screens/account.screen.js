@@ -39,10 +39,6 @@ export const AccountScreen = ({ navigation }) => {
           </AuthButton>
         </Spacer>
       </AccountContainer>
-<<<<<<< HEAD
-    
-=======
->>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
     </AccountBackground>
   );
 };

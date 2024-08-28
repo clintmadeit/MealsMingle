@@ -5,27 +5,17 @@ import {
   AccountCover,
   AuthButton,
   AuthInput,
-<<<<<<< HEAD
   ErrorContainer,
-=======
->>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
 } from "../components/account-background.style";
 import { AuthContext } from "../../../services/authentication/auth.context";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 
-<<<<<<< HEAD
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { onLogin, error } = useContext(AuthContext);
 
-=======
-export const LoginScreen = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const { onLogin, error } = useContext(AuthContext);
->>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
   return (
     <AccountBackground>
       <AccountCover />
@@ -45,10 +35,7 @@ export const LoginScreen = () => {
             textContentType="password"
             secureTextEntry
             autoCapitalize="none"
-<<<<<<< HEAD
-=======
             secure
->>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
             onChangeText={(p) => setPassword(p)}
           />
         </Spacer>
@@ -65,7 +52,6 @@ export const LoginScreen = () => {
             Login
           </AuthButton>
           {error && (
-<<<<<<< HEAD
             <ErrorContainer size="large">
               <Text variant="error">{error}</Text>
             </ErrorContainer>
@@ -85,14 +71,6 @@ export const LoginScreen = () => {
           Back
         </AuthButton>
       </Spacer>
-=======
-            <Spacer size="large">
-              <Text variant="error">{error}</Text>
-            </Spacer>
-          )}
-        </Spacer>
-      </AccountContainer>
->>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
     </AccountBackground>
   );
 };
