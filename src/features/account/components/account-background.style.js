@@ -38,14 +38,22 @@ export const AuthInput = styled(TextInput)`
 
 export const Title = styled(Text)`
   font-size: 30px;
+<<<<<<< HEAD
   color: ${colors.brand.secondary};
+=======
+  color: ${colors.brand.primary};
+>>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
   text-align: center;
   margin-bottom: ${(props) => props.theme.space.md};
   font-family: ${(props) => props.theme.fonts.body};
 `;
 
 export const ErrorContainer = styled.View`
+<<<<<<< HEAD
   max-width: 250px;
+=======
+  max-width: 300px;
+>>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
   align-items: center;
   align-self: center;
   margin-top: ${(props) => props.theme.space.md};
