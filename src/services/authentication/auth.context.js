@@ -1,7 +1,9 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 import { auth } from "./firebase.config";
 
@@ -12,22 +14,16 @@ export const AuthContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
 
-  const onLogin = (email, password) => {
-    if (!email || !password) {
-      setError("Email and password cannot be empty");
-      return;
-    }
-    setIsLoading(true);
-    signInWithEmailAndPassword(auth, email, password)
-      .then((u) => {
-        setUser(u);
-        setIsLoading(false);
-      })
-      .catch((e) => {
-        setIsLoading(false);
-        setError(e.toString());
-      });
-  };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (usr) => {
+      if (usr) {
+        setUser(usr);
+      }
+      setIsLoading(false);
+    });
+
+    return () => unsubscribe(); // Clean up the subscription
+  }, []);
 
   const onRegister = (email, password, repeatedPassword) => {
     if (!email || !password || !repeatedPassword) {
@@ -50,6 +46,36 @@ export const AuthContextProvider = ({ children }) => {
       });
   };
 
+  const onLogin = (email, password) => {
+    if (!email || !password) {
+      setError("Email and password cannot be empty");
+      return;
+    }
+    setIsLoading(true);
+    signInWithEmailAndPassword(auth, email, password)
+      .then((u) => {
+        setUser(u);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        setIsLoading(false);
+        setError(e.toString());
+      });
+  };
+
+  const onLogout = () => {
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {
+        setUser(null);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        setIsLoading(false);
+        setError(e.toString());
+      });
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -58,6 +84,7 @@ export const AuthContextProvider = ({ children }) => {
         isLoading,
         error,
         onLogin,
+        onLogout,
         onRegister,
       }}
     >
