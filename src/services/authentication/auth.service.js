@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "./firebase.config";
-=======
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
->>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
 
 // Login function
 export const loginRequest = (email, password) => {
@@ -17,7 +12,6 @@ export const loginRequest = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password);
 };
 
-<<<<<<< HEAD
 // Register function
 export const registerRequest = (email, password) => {
   if (!auth) {
@@ -25,10 +19,3 @@ export const registerRequest = (email, password) => {
   }
   return createUserWithEmailAndPassword(auth, email, password);
 };
-=======
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-export const loginRequest = (email, password) =>
-  signInWithEmailAndPassword(auth, email, password);
->>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5

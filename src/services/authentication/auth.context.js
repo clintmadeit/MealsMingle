@@ -9,7 +9,6 @@ export const AuthContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
 
-<<<<<<< HEAD
   const onRegister = (email, password, repeatedPassword) => {
     if (!email || !password || !repeatedPassword) {
       setError("Email and password cannot be empty");
@@ -19,20 +18,6 @@ export const AuthContextProvider = ({ children }) => {
       setError("Passwords do not match");
       return;
     }
-=======
-  const onLogin = (email, password) => {
-    if (!email || !password) {
-      setError("Email and password cannot be empty");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError("Invalid email format");
-      return;
-    }
-
->>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((u) => {
@@ -52,11 +37,7 @@ export const AuthContextProvider = ({ children }) => {
         user,
         isLoading,
         error,
-<<<<<<< HEAD
         onRegister,
-=======
-        onLogin,
->>>>>>> a79124ca94828f75eddc18a7fe865ede6b809ee5
       }}
     >
       {children}
