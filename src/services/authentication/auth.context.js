@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
-import { initializeApp } from "firebase/app";
-import { loginRequest } from "./auth.service";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./firebase.config";
 
 export const AuthContext = createContext();
 
@@ -9,20 +9,17 @@ export const AuthContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [user, setUser] = useState(null);
 
-  const onLogin = (email, password) => {
-    if (!email || !password) {
+  const onRegister = (email, password, repeatedPassword) => {
+    if (!email || !password || !repeatedPassword) {
       setError("Email and password cannot be empty");
       return;
     }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setError("Invalid email format");
+    if (password !== repeatedPassword) {
+      setError("Passwords do not match");
       return;
     }
-
     setIsLoading(true);
-    loginRequest(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((u) => {
         setUser(u);
         setIsLoading(false);
@@ -32,6 +29,7 @@ export const AuthContextProvider = ({ children }) => {
         setError(e.toString());
       });
   };
+
   return (
     <AuthContext.Provider
       value={{
@@ -39,7 +37,7 @@ export const AuthContextProvider = ({ children }) => {
         user,
         isLoading,
         error,
-        onLogin,
+        onRegister,
       }}
     >
       {children}

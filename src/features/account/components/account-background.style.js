@@ -45,7 +45,7 @@ export const Title = styled(Text)`
 `;
 
 export const ErrorContainer = styled.View`
-  max-width: 300px;
+  max-width: 250px;
   align-items: center;
   align-self: center;
   margin-top: ${(props) => props.theme.space.md};

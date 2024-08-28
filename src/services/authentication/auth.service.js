@@ -1,18 +1,21 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "./firebase.config";
 
-// Init firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyBerv3gxQW_sPjsalVIUX2LqO3-0J1DH4A",
-  authDomain: "meals-mingle.firebaseapp.com",
-  projectId: "meals-mingle",
-  storageBucket: "meals-mingle.appspot.com",
-  messagingSenderId: "982330948880",
-  appId: "1:982330948880:web:b43df9f40d1fb0bce0b995",
+// Login function
+export const loginRequest = (email, password) => {
+  if (!auth) {
+    return Promise.reject(new Error("Firebase Auth not initialized"));
+  }
+  return signInWithEmailAndPassword(auth, email, password);
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-export const loginRequest = (email, password) =>
-  signInWithEmailAndPassword(auth, email, password);
+// Register function
+export const registerRequest = (email, password) => {
+  if (!auth) {
+    return Promise.reject(new Error("Firebase Auth not initialized"));
+  }
+  return createUserWithEmailAndPassword(auth, email, password);
+};

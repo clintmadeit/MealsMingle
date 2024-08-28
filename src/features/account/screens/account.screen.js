@@ -39,6 +39,7 @@ export const AccountScreen = ({ navigation }) => {
           </AuthButton>
         </Spacer>
       </AccountContainer>
+    
     </AccountBackground>
   );
 };
