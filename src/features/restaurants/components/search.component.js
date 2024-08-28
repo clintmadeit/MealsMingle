@@ -8,8 +8,8 @@ const SearchContainer = styled.View`
 `;
 
 const StyledSearchbar = styled(Searchbar)`
-  border-radius: 5px;
-  background-color: ${(props) => props.theme.colors.bg.primary};
+  border-radius: 10px;
+  background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
 
 export const Search = ({ isfavouritesToggled, onFavouritesToggle }) => {

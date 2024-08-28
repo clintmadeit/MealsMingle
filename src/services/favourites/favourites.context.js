@@ -6,18 +6,19 @@ export const FavouritesContext = createContext();
 
 export const FavouritesContextProvider = ({ children }) => {
   const { user } = useContext(AuthContext);
-
   const [favourites, setFavourites] = useState([]);
 
+  // Function to save favourites to AsyncStorage
   const saveFavourites = async (value, uid) => {
     try {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem(`@favourites-${uid}`, jsonValue);
     } catch (e) {
-      console.log("error storing", e);
+      console.log("Error storing favourites:", e);
     }
   };
 
+  // Function to load favourites from AsyncStorage
   const loadFavourites = async (uid) => {
     try {
       const value = await AsyncStorage.getItem(`@favourites-${uid}`);
@@ -25,30 +26,32 @@ export const FavouritesContextProvider = ({ children }) => {
         setFavourites(JSON.parse(value));
       }
     } catch (e) {
-      console.log("error loading", e);
+      console.log("Error loading favourites:", e);
     }
   };
 
+  // Function to add a restaurant to favourites
   const add = (restaurant) => {
-    setFavourites([...favourites, restaurant]);
+    setFavourites((prevFavourites) => [...prevFavourites, restaurant]);
   };
 
+  // Function to remove a restaurant from favourites
   const remove = (restaurant) => {
-    const newFavourites = favourites.filter(
-      (x) => x.placeId !== restaurant.placeId
+    setFavourites((prevFavourites) =>
+      prevFavourites.filter((x) => x.placeId !== restaurant.placeId)
     );
-    setFavourites(newFavourites);
   };
 
+  // Load favourites when the user changes
   useEffect(() => {
-    if (user) {
+    if (user?.uid) {
       loadFavourites(user.uid);
     }
-    loadFavourites();
   }, [user]);
 
+  // Save favourites when the user or favourites change
   useEffect(() => {
-    if (user) {
+    if (user?.uid) {
       saveFavourites(favourites, user.uid);
     }
   }, [favourites, user]);
