@@ -3,10 +3,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "../../features/maps/screens/map.screen";
-import { SettingsScreen } from "../../features/restaurants/screens/settings.screen";
 import { FavouritesContextProvider } from "../../services/favourites/favourites.context";
 import { LocationContextProvider } from "../../services/locations/location.context";
 import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
+import { SettingsScreen } from "../../features/settings/screens/settings.screen";
 
 const Tab = createBottomTabNavigator();
 
